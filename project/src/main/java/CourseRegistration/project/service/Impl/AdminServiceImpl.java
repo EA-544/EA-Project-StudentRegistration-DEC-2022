@@ -4,7 +4,7 @@ import CourseRegistration.project.domain.CourseOffering;
 import CourseRegistration.project.domain.RegistrationEvent;
 
 import java.util.Date;
-
+@Service
 public class AdminServiceImpl {
 
     public void processRegistrations(RegistrationEvent registrationEvent, CourseOffering courseOffering){
