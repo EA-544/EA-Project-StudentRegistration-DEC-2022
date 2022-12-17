@@ -1,7 +1,7 @@
 package CourseRegistration.project.domain;
 
-import jakarta.persistence.*;
 
+import javax.persistence.*;
 import java.util.Date;
 @Entity
 public class AcademicBlock {
@@ -11,10 +11,12 @@ public class AcademicBlock {
     private String code;
     private String name;
     private String semester;
+    @Temporal(TemporalType.DATE)
     private Date startDate;
+    @Temporal(TemporalType.DATE)
     private Date endDate;
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @JoinTable
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn
     private CourseOffering courseOffering;
 
     public AcademicBlock(int id, String code, String name, String semester,
