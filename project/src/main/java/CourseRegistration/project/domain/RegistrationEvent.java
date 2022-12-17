@@ -1,11 +1,15 @@
 package CourseRegistration.project.domain;
 
+import javax.persistence.*;
 import java.util.Date;
-
+@Entity
 public class RegistrationEvent {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Temporal(TemporalType. DATE)
     private Date startDate;
+    @Temporal(TemporalType. DATE)
     private Date endDate;
 
     public RegistrationEvent(int id, Date startDate, Date endDate) {

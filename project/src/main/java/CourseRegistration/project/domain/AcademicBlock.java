@@ -1,8 +1,6 @@
 package CourseRegistration.project.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Date;
 @Entity
@@ -15,6 +13,8 @@ public class AcademicBlock {
     private String semester;
     private Date startDate;
     private Date endDate;
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable
     private CourseOffering courseOffering;
 
     public AcademicBlock(int id, String code, String name, String semester,
@@ -26,6 +26,10 @@ public class AcademicBlock {
         this.startDate = startDate;
         this.endDate = endDate;
         this.courseOffering = courseOffering;
+    }
+
+    public AcademicBlock() {
+
     }
 
     public int getId() {

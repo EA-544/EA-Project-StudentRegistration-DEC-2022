@@ -1,25 +1,28 @@
 package CourseRegistration.project.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class RegistrationRequirement {
     @Id
     @GeneratedValue
     private int id;
-
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name= "student_id")
     private Student student;
 
-    private CourseOffering courseOffering;
+    @OneToMany(cascade = CascadeType.PERSIST)
+    @OrderColumn(name = "sequence")
+    private List<CourseOffering> courseOffering = new ArrayList<>();
     private int coursePriorityNumber;
 
     public RegistrationRequirement() {
     }
 
-    public RegistrationRequirement(Student student, CourseOffering courseOffering, int coursePriorityNumber) {
+    public RegistrationRequirement(Student student, List<CourseOffering> courseOffering, int coursePriorityNumber) {
         this.student = student;
         this.courseOffering = courseOffering;
         this.coursePriorityNumber = coursePriorityNumber;
@@ -33,11 +36,11 @@ public class RegistrationRequirement {
         this.student = student;
     }
 
-    public CourseOffering getCourseOffering() {
+    public List<CourseOffering> getCourseOffering() {
         return courseOffering;
     }
 
-    public void setCourseOffering(CourseOffering courseOffering) {
+    public void setCourseOffering(List<CourseOffering> courseOffering) {
         this.courseOffering = courseOffering;
     }
 

@@ -1,10 +1,29 @@
 package CourseRegistration.project.domain;
 
+
+import javax.persistence.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+@Entity
 public class Student extends Person{
+    @Id
+    @GeneratedValue
     private int id;
     private String studentId;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn
     private Address mailingAddress;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn
     private Address homeAddress;
+
+    public Long getSId() {
+        return sId;
+    }
+
+    public void setSId(Long sId) {
+        this.sId = sId;
+    }
 
     public Student(String name, String email, int id, String studentId, Address mailingAddress, Address homeAddress) {
         super(name, email);
@@ -12,6 +31,10 @@ public class Student extends Person{
         this.studentId = studentId;
         this.mailingAddress = mailingAddress;
         this.homeAddress = homeAddress;
+    }
+
+    public Student() {
+        super();
     }
 
     public int getId() {

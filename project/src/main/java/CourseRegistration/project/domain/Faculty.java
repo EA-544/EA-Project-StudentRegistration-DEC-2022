@@ -1,10 +1,18 @@
 package CourseRegistration.project.domain;
 
-public class Faculty extends Person{
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import org.springframework.data.annotation.Id;
 
+@Entity
+public class Faculty extends Person{
+    @Id
+    @GeneratedValue
     private int id;
     private String tile;
 
+    public Faculty() {
+    }
 
     public Faculty(String name, String email, int id, String tile) {
         super(name, email);
