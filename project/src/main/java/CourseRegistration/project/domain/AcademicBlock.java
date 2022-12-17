@@ -3,6 +3,7 @@ package CourseRegistration.project.domain;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 @Entity
@@ -13,9 +14,13 @@ public class AcademicBlock {
     private String code;
     private String name;
     private String semester;
+    @DateTimeFormat
     private Date startDate;
     private Date endDate;
     private CourseOffering courseOffering;
+
+    public AcademicBlock() {
+    }
 
     public AcademicBlock(int id, String code, String name, String semester,
                          Date startDate, Date endDate, CourseOffering courseOffering) {
