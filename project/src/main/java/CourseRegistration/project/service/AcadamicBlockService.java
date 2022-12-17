@@ -15,6 +15,6 @@ public interface AcadamicBlockService {
 
     public AcademicBlock updateBlock(String blockId, AcademicBlock new_Block) throws NoSuchResourceException;
 
-    public ResponseEntity<Void> deleteBlock(String blockId) throws NoSuchResourceException;
+
 
 }

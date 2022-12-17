@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface AcadamicBlockRepository extends JpaRepository<AcademicBlock,Integer> {
-    Optional<Block> findByCode(String code);
+    Optional<AcademicBlock> findByCode(String code);
 }
