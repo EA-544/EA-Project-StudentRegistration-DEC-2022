@@ -8,13 +8,13 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 @Entity
-public class Admin extends Person{
+public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     public Admin(String name, String email, int id) {
-        super(name, email);
+
         this.id = id;
     }
 

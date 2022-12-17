@@ -1,11 +1,10 @@
 package CourseRegistration.project.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import org.springframework.data.annotation.Id;
+
+import javax.persistence.*;
 
 @Entity
-public class Faculty extends Person{
+public class Faculty {
     @Id
     @GeneratedValue
     private int id;
@@ -15,7 +14,7 @@ public class Faculty extends Person{
     }
 
     public Faculty(String name, String email, int id, String tile) {
-        super(name, email);
+
         this.id = id;
         this.tile = tile;
 

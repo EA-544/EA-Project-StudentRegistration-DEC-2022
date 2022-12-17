@@ -1,8 +1,7 @@
 package CourseRegistration.project.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+
+import javax.persistence.*;
 
 @Entity
 public class CourseOffering {
@@ -13,8 +12,14 @@ public class CourseOffering {
     private String facultyInitials;
     private int availableSeats;
     private int capacity;
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn
     private Faculty faculty;
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn
     private AcademicBlock academicBlock;
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn
     private Course course;
 
     public CourseOffering(int id, String code, String facultyInitials, int availableSeats,
