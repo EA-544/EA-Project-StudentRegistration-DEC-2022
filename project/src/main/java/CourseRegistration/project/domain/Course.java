@@ -1,68 +1,25 @@
 package CourseRegistration.project.domain;
 
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.List;
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
+@Entity
 public class Course {
-    private int id;
-    private String code;
+    @Id
+    @GeneratedValue
+    private Long id;
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false,length = 5)
+    private String code;
     private String description;
-    private Course prerequisite;
+//    @ManyToOne
+//    private List<CourseOffering> courseOfferings;
 
-    public Course(int id, String code, String name, String description, Course prerequisite) {
-        this.id = id;
-        this.code = code;
-        this.name = name;
-        this.description = description;
-        this.prerequisite = prerequisite;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Course getPrerequisite() {
-        return prerequisite;
-    }
-
-    public void setPrerequisite(Course prerequisite) {
-        this.prerequisite = prerequisite;
-    }
-
-    @Override
-    public String toString() {
-        return "Course{" +
-                "id=" + id +
-                ", code='" + code + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", prerequisite=" + prerequisite +
-                '}';
-    }
 }

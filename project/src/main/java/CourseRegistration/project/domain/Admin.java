@@ -1,23 +1,32 @@
 package CourseRegistration.project.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
-
+@Entity
 public class Admin extends Person{
 
-    private int id;
+    @Id
+    @GeneratedValue
+    private Long id;
 
-    public Admin(String name, String email, int id) {
-        super(name, email);
+    public Admin() {
+    }
+
+    public Admin(String name, String email, Long id) {
+        super();
         this.id = id;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -20,21 +20,25 @@ public class StudentServiceImpl implements StudentService {
     private StudentRepository studentRepository;
     @Autowired
     CourseOfferingRepository courseOfferingRepository;
-
-
     @Override
     public void addStudent(Student student) {
-
+        studentRepository.save(student);
     }
 
-    public void addEnrollment(Long studentId, List<RegistrationEvent> registrationEventList) throws
-            NoSuchResourceException{
-        if(registrationEventList.size()>courseOfferingRepository.size()){
-            throw new NoSuchResourceException();
-        }else if{registrationEventList.size()<courseOfferingRepository.findAll().size(){
-            return
-        }
-
+    @Override
+    public List<Student> getAllStudents() {
+        return studentRepository.findAll();
     }
+
+
+//    public void addEnrollment(Long studentId, List<RegistrationEvent> registrationEventList) throws
+//            NoSuchResourceException{
+//        if(registrationEventList.size()>courseOfferingRepository.size()){
+//            throw new NoSuchResourceException();
+//        }else if{registrationEventList.size()<courseOfferingRepository.findAll().size(){
+//            return re
+//        }
+//
+//    }
 }
 

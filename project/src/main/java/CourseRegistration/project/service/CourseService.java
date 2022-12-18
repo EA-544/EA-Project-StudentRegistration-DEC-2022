@@ -12,5 +12,5 @@ public interface CourseService {
 
     public Course getCourse(String courseId) throws NoSuchResourceException;
 
-    public Course updateCourse(String courseId, Course new_Course) throws NoSuchResourceException;
+    public void updateCourse(String courseId, Course new_Course) throws NoSuchResourceException;
 }

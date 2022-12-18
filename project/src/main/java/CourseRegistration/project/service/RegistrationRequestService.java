@@ -1,4 +1,4 @@
 package CourseRegistration.project.service;
 
-public interface RegistrationService {
+public interface RegistrationRequestService {
 }

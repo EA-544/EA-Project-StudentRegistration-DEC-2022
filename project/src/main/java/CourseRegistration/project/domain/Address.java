@@ -1,80 +1,24 @@
 package CourseRegistration.project.domain;
 
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+@Embeddable
+@Data
+@NoArgsConstructor
 public class Address {
 
-    private int id;
+    @Column(nullable = false)
     private String street;
+    @Column(nullable = false)
     private String city;
+    @Column(nullable = false,length = 5)
     private String postalCode;
-    private String stateProvince;
-    private String countryRegion;
+    @Column(nullable = false)
+    private String state;
+    @Column(nullable = false)
+    private String country;
 
-    public Address(int id, String street, String city, String postalCode, String stateProvince, String countryRegion) {
-        this.id = id;
-        this.street = street;
-        this.city = city;
-        this.postalCode = postalCode;
-        this.stateProvince = stateProvince;
-        this.countryRegion = countryRegion;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    public String getStateProvince() {
-        return stateProvince;
-    }
-
-    public void setStateProvince(String stateProvince) {
-        this.stateProvince = stateProvince;
-    }
-
-    public String getCountryRegion() {
-        return countryRegion;
-    }
-
-    public void setCountryRegion(String countryRegion) {
-        this.countryRegion = countryRegion;
-    }
-
-    @Override
-    public String toString() {
-        return "Address{" +
-                "id=" + id +
-                ", street='" + street + '\'' +
-                ", city='" + city + '\'' +
-                ", postalCode='" + postalCode + '\'' +
-                ", stateProvince='" + stateProvince + '\'' +
-                ", countryRegion='" + countryRegion + '\'' +
-                '}';
-    }
 }

@@ -1,42 +1,29 @@
 package CourseRegistration.project.domain;
 
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
+@Data
+@NoArgsConstructor
 public class RegistrationEvent {
+    @Id
+    @GeneratedValue
+    private  int id;
+    private String name;
+    @DateTimeFormat
+    private LocalDate startDate;
+    @DateTimeFormat
+    private LocalDate endDate;
 
-    private int id;
-    private Date startDate;
-    private Date endDate;
-
-    public RegistrationEvent(int id, Date startDate, Date endDate) {
-        this.id = id;
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
+    @OneToMany(cascade = CascadeType.ALL)
+    private Collection<RegistrationGroup> registrationGroups;
 
 
 }

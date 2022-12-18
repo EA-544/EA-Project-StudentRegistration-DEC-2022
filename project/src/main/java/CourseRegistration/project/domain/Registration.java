@@ -1,36 +1,28 @@
 package CourseRegistration.project.domain;
 
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.List;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@Data
 public class Registration {
 
-    private Student student;
-    private CourseOffering courseOffering;
+    @Id
+    @GeneratedValue
+    private int id;
+    @Column(nullable = false)
+    private String studentId;
+    @Column(nullable = false)
+    private String courseId;
 
-    public Registration(Student student, CourseOffering courseOffering) {
-        this.student = student;
-        this.courseOffering = courseOffering;
-    }
+    @OneToMany(cascade = CascadeType.PERSIST)
+    private List<CourseOffering> courseOfferingList;
 
-    public Student getStudent() {
-        return student;
-    }
 
-    public void setStudent(Student student) {
-        this.student = student;
-    }
 
-    public CourseOffering getCourseOffering() {
-        return courseOffering;
-    }
-
-    public void setCourseOffering(CourseOffering courseOffering) {
-        this.courseOffering = courseOffering;
-    }
-
-    @Override
-    public String toString() {
-        return "Registration{" +
-                "student=" + student +
-                ", courseOffering=" + courseOffering +
-                '}';
-    }
 }

@@ -15,26 +15,23 @@ public class CourseServiceImpl implements CourseService {
     public List<Course> getAllCourses() {
         return courseRepository.findAll();
     }
-
     @Override
     public void addCourse(Course course) {
         courseRepository.save(course);
     }
-
     @Override
     public Course getCourse(String courseId) throws NoSuchResourceException {
         return courseRepository.findByCode(courseId)
                 .orElseThrow(() -> new NoSuchResourceException("Can't find Course", 1L));
     }
-
     @Override
-    public Course updateCourse(String courseId, Course new_Course) throws NoSuchResourceException {
+    public void updateCourse(String courseId, Course new_Course) throws NoSuchResourceException {
         Course course = courseRepository.findByCode(courseId)
                 .orElseThrow(() -> new NoSuchResourceException("Can't find course", 1L));
         course.setCode(new_Course.getCode());
         course.setName(new_Course.getName());
         course.setDescription(new_Course.getDescription());
 
-        return courseRepository.save(course);
+        courseRepository.save(course);
     }
 }
